@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.http import Http404
 
 from rest_framework import status, permissions
@@ -9,16 +10,16 @@ from .. import serializers, models
 
 
 @api_view(['GET'])
-def list_services(request):
-    objects = models.Service.objects.all()
-    serializer = serializers.ServiceSerializer(objects, many=True)
+@permission_classes(permissions.IsAdminUser)
+def list_consultations(request):
+    objects = models.Consultation.objects.all()
+    serializer = serializers.ConsultationSerializer(objects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
-def add_service(request):
-    serializer = serializers.ServiceSerializer(data=request.data)
+def add_consultation(request):
+    serializer = serializers.ConsultationSerializer(data=request.data)
 
     if serializer.is_valid():
         serializer.save()
@@ -27,20 +28,22 @@ def add_service(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EditService(APIView):
+class EditConsultation(APIView):
     permission_classes = permissions.IsAdminUser
 
     def get_object(self, pk):
         try:
-            return models.Service.objects.get(pk=pk)
-        except models.Service.DoesNotExist:
+            return models.Consultation.objects.get(pk=pk)
+        except models.Consultation.DoesNotExist:
             raise Http404
 
     def put(self, request, pk):
-        profit = self.get_object(pk)
-        serializer = serializers.ServiceSerializer(profit, data=request.data)
+        consultation = self.get_object(pk)
+        serializer = serializers.ServiceSerializer(consultation, data=request.data)
 
         if serializer.is_valid():
+            if serializer.data.status == 'PROCESSED':
+                consultation.response_time = datetime.now()
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
