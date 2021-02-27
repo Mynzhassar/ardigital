@@ -4,21 +4,21 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from models import Profit
-from serializers import ProfitSerializer
+from ..models import Service
+from ..serializers import ServiceSerializer
 
 
 @api_view(['GET'])
-def list_profits(request):
-    objects = Profit.objects.all()
-    serializer = ProfitSerializer(objects, many=True)
+def list_services(request):
+    objects = Service.objects.all()
+    serializer = ServiceSerializer(objects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
 @permission_classes(permissions.IsAdminUser)
-def add_profit(request):
-    serializer = ProfitSerializer(data=request.data)
+def add_service(request):
+    serializer = ServiceSerializer(data=request.data)
 
     if serializer.is_valid():
         serializer.save()
@@ -27,18 +27,18 @@ def add_profit(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EditProfit(APIView):
+class EditService(APIView):
     permission_classes = permissions.IsAdminUser
 
     def get_object(self, pk):
         try:
-            return Profit.objects.get(pk=pk)
-        except Profit.DoesNotExist:
+            return Service.objects.get(pk=pk)
+        except Service.DoesNotExist:
             raise Http404
 
     def put(self, request, pk):
         profit = self.get_object(pk)
-        serializer = ProfitSerializer(profit, data=request.data)
+        serializer = ServiceSerializer(profit, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
