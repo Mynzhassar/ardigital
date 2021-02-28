@@ -32,7 +32,7 @@ def _validate_tel_num_len(telephone_number, with_plus):
     tel_num_len = len(telephone_number)
 
     return tel_num_len == constants.VALID_PHONE_NUM_LEN or (
-            tel_num_len == constants.VALID_PHONE_NUM_LEN_WITH_PLUS and with_plus)
+            tel_num_len == constants.VALID_PHONE_NUM_MAX_LEN and with_plus)
 
 
 def _validate_operator(telephone_number, with_plus):
