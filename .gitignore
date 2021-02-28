@@ -2,5 +2,4 @@ envs
 .idea
 __pycache__
 
-manage.py
 db.sqlite3
