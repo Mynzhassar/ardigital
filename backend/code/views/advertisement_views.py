@@ -37,8 +37,8 @@ class EditAdvertisement(APIView):
             raise Http404
 
     def put(self, request, pk):
-        site = self.get_object(pk)
-        serializer = serializers.AdvertisementSerializer(site, data=request.data)
+        advertisement = self.get_object(pk)
+        serializer = serializers.AdvertisementSerializer(advertisement, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -47,6 +47,6 @@ class EditAdvertisement(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        profit = self.get_object(pk)
-        profit.delete()
+        advertisement = self.get_object(pk)
+        advertisement.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

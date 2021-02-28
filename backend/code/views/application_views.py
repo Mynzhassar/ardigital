@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.http import Http404
 
 from rest_framework import status, permissions
@@ -5,20 +6,20 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .. import models, serializers
+from .. import serializers, models
 
 
 @api_view(['GET'])
-def list_sites(request):
-    objects = models.Site.objects.all()
-    serializer = serializers.SiteSerializer(objects, many=True)
+@permission_classes(permissions.IsAdminUser)
+def list_applications(request):
+    objects = models.Application.objects.all()
+    serializer = serializers.ApplicationSerializer(objects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
-def add_site(request):
-    serializer = serializers.SiteSerializer(data=request.data)
+def add_application(request):
+    serializer = serializers.ApplicationSerializer(data=request.data)
 
     if serializer.is_valid():
         serializer.save()
@@ -27,26 +28,28 @@ def add_site(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EditSite(APIView):
+class EditApplication(APIView):
     permission_classes = permissions.IsAdminUser
 
     def get_object(self, pk):
         try:
-            return models.Site.objects.get(pk=pk)
-        except models.Site.DoesNotExist:
+            return models.Application.objects.get(pk=pk)
+        except models.Application.DoesNotExist:
             raise Http404
 
     def put(self, request, pk):
-        site = self.get_object(pk)
-        serializer = serializers.ProfitSerializer(site, data=request.data)
+        application = self.get_object(pk)
+        serializer = serializers.ApplicationSerializer(application, data=request.data)
 
         if serializer.is_valid():
+            if serializer.data.status == 'PROCESSED':
+                application.response_time = datetime.now()
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        site = self.get_object(pk)
-        site.delete()
+        application = self.get_object(pk)
+        application.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

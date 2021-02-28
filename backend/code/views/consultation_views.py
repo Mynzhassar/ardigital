@@ -50,6 +50,6 @@ class EditConsultation(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        profit = self.get_object(pk)
-        profit.delete()
+        consultation = self.get_object(pk)
+        consultation.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

@@ -37,8 +37,8 @@ class EditService(APIView):
             raise Http404
 
     def put(self, request, pk):
-        profit = self.get_object(pk)
-        serializer = serializers.ServiceSerializer(profit, data=request.data)
+        service = self.get_object(pk)
+        serializer = serializers.ServiceSerializer(service, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -47,6 +47,6 @@ class EditService(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        profit = self.get_object(pk)
-        profit.delete()
+        service = self.get_object(pk)
+        service.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

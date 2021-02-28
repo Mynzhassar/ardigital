@@ -79,3 +79,19 @@ class Advertisement(Case):
     class Meta:
         verbose_name = 'Реклама'
         verbose_name_plural = 'Рекламы'
+
+
+class Application(models.Model):
+    full_name = models.CharField(max_length=100)
+    telephone_number = models.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN)
+    status = models.CharField(max_length=15,
+                              choices=constants.APPLICATION_STATUS_CHOICES)
+
+    receipted_time = models.DateTimeField(default=timezone.now)
+    response_time = models.DateTimeField(null=True)
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = 'Заявка',
+        verbose_name_plural = 'Заявки'
