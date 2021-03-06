@@ -7,11 +7,14 @@ def validate_full_name(full_name):
 
 
 def validate_telephone_number(telephone_number):
-    with_plus = telephone_number[0] == '+'
+    telephone_number = telephone_number.replace('+', '')
 
-    valid_len = _validate_tel_num_len(telephone_number, with_plus)
-    valid_operator = _validate_operator(telephone_number, with_plus)
-    valid_content = _validate_phone_num_content(telephone_number, with_plus)
+    valid_len = _validate_tel_num_len(telephone_number)
+    print(valid_len)
+    valid_operator = _validate_operator(telephone_number)
+    print(valid_operator)
+    valid_content = _validate_phone_num_content(telephone_number)
+    print(valid_content)
 
     if not valid_len or not valid_operator or not valid_content:
         raise ValueError('Некорректный номер телефона')
@@ -23,24 +26,22 @@ def _validate_full_name_len(full_name):
 
 
 def _validate_full_name_content(full_name):
-    for char in full_name:
+    for char in full_name.split():
         if not char.isalpha():
             raise ValueError(f'Некорректный символ {char}')
 
 
-def _validate_tel_num_len(telephone_number, with_plus):
-    tel_num_len = len(telephone_number)
-
-    return tel_num_len == constants.VALID_PHONE_NUM_LEN or (
-            tel_num_len == constants.VALID_PHONE_NUM_MAX_LEN and with_plus)
+def _validate_tel_num_len(telephone_number):
+    return len(telephone_number) == constants.VALID_PHONE_NUM_LEN
 
 
-def _validate_operator(telephone_number, with_plus):
-    operator = telephone_number[2:5] if with_plus else telephone_number[1:4]
-    return operator in constants.VALID_PHONE_OPERATORS
+def _validate_operator(telephone_number):
+    return telephone_number[1:4] in constants.VALID_PHONE_OPERATORS
 
 
-def _validate_phone_num_content(telephone_number, with_plus):
+def _validate_phone_num_content(telephone_number):
     for char in telephone_number:
-        if not (char.isdigit() or (char == '+' and with_plus)):
+        if not char.isdigit():
             return False
+
+    return True

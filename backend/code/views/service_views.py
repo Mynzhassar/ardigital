@@ -16,7 +16,7 @@ def list_services(request):
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def add_service(request):
     serializer = serializers.ServiceSerializer(data=request.data)
 
@@ -28,7 +28,7 @@ def add_service(request):
 
 
 class EditService(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser,)
 
     def get_object(self, pk):
         try:

@@ -16,7 +16,7 @@ def list_profits(request):
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def add_profit(request):
     serializer = serializers.ProfitSerializer(data=request.data)
 
@@ -28,7 +28,7 @@ def add_profit(request):
 
 
 class EditProfit(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser,)
 
     def get_object(self, pk):
         try:

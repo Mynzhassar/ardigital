@@ -11,7 +11,7 @@ class ProfitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Profit
-        fields = ('image', 'description',)
+        fields = ('id', 'image', 'description',)
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -22,25 +22,27 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Service
-        fields = ('title', 'image', 'description',)
+        fields = ('id', 'title', 'image', 'description',)
 
 
 class ConsultationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    service = serializers.CharField(max_length=100)
+    service_id = serializers.IntegerField(write_only=True)
     full_name = serializers.CharField(max_length=100,
                                       validators=[validators.validate_full_name])
 
     telephone_number = serializers.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN,
                                              validators=[validators.validate_telephone_number])
 
-    status = serializers.ChoiceField(choices=constants.CONSULTATION_STATUS_CHOICES)
+    status = serializers.ChoiceField(choices=constants.CONSULTATION_STATUS_CHOICES,
+                                     read_only=True)
+
     receipted_time = serializers.DateTimeField(default=timezone.now)
     response_time = serializers.DateTimeField(allow_null=True)
 
     class Meta:
         model = models.Consultation
-        fields = ('service', 'full_name', 'telephone_number', 'status', 'receipted_time',
+        fields = ('id', 'service_id', 'full_name', 'telephone_number', 'status', 'receipted_time',
                   'response_time',)
 
 

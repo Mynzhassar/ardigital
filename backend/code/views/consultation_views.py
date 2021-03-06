@@ -10,7 +10,7 @@ from .. import serializers, models
 
 
 @api_view(['GET'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def list_consultations(request):
     objects = models.Consultation.objects.all()
     serializer = serializers.ConsultationSerializer(objects, many=True)
@@ -18,8 +18,13 @@ def list_consultations(request):
 
 
 @api_view(['POST'])
-def add_consultation(request):
-    serializer = serializers.ConsultationSerializer(data=request.data)
+def add_consultation(request, pk):
+    data = {
+        'service_id': pk,
+        'full_name': request.data['full_name'],
+        'telephone_number': request.data['telephone_number'],
+    }
+    serializer = serializers.ConsultationSerializer(data=data)
 
     if serializer.is_valid():
         serializer.save()
@@ -37,13 +42,11 @@ class EditConsultation(APIView):
         except models.Consultation.DoesNotExist:
             raise Http404
 
-    def put(self, request, pk):
+    def update(self, request, pk):
         consultation = self.get_object(pk)
         serializer = serializers.ServiceSerializer(consultation, data=request.data)
 
         if serializer.is_valid():
-            if serializer.data.status == 'PROCESSED':
-                consultation.response_time = datetime.now()
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 

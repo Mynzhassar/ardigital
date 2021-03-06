@@ -5,13 +5,14 @@ from . import constants
 
 
 class Profit(models.Model):
-    image = models.ImageField(upload_to='profits')
+    image = models.ImageField(upload_to='media/profits')
     description = models.TextField(blank=False)
 
     objects = models.Manager()
 
     class Meta:
         verbose_name = 'Профит'
+        verbose_name_plural = 'Профит'
 
     def __str__(self):
         return self.description
@@ -19,7 +20,7 @@ class Profit(models.Model):
 
 class Service(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='services')
+    image = models.ImageField(upload_to='media/services')
     description = models.TextField(blank=False)
 
     objects = models.Manager()
@@ -40,7 +41,8 @@ class Consultation(models.Model):
     full_name = models.CharField(max_length=100)
     telephone_number = models.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN)
     status = models.CharField(max_length=10,
-                              choices=constants.CONSULTATION_STATUS_CHOICES)
+                              choices=constants.CONSULTATION_STATUS_CHOICES,
+                              default=constants.STATUS_NEW)
 
     receipted_time = models.DateTimeField(default=timezone.now)
     response_time = models.DateTimeField(null=True)
@@ -52,11 +54,11 @@ class Consultation(models.Model):
         verbose_name_plural = 'Заявки на консультацию'
 
     def __str__(self):
-        return self.service
+        return self.service.title
 
 
 class Case(models.Model):
-    image = models.ImageField(upload_to='cases')
+    image = models.ImageField(upload_to='media/cases')
     description = models.TextField(blank=False)
     link = models.URLField()
 
