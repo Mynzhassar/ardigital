@@ -35,8 +35,8 @@ advertisement_urls = [
 
 application_urls = [
     path('applications', views.application_views.list_applications),
-    path('add_advertisement', views.application_views.add_application),
-    path('advertisement/<int:pk>', views.application_views.EditApplication.as_view()),
+    path('add_application', views.application_views.add_application),
+    path('application/<int:pk>', views.application_views.EditApplication.as_view()),
 ]
 
 api_urls = profit_urls + service_urls + consultation_urls + site_urls + advertisement_urls + \

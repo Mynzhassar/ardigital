@@ -34,7 +34,7 @@ def add_consultation(request, pk):
 
 
 class EditConsultation(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser,)
 
     def get_object(self, pk):
         try:

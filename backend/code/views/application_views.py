@@ -10,7 +10,7 @@ from .. import serializers, models
 
 
 @api_view(['GET'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def list_applications(request):
     objects = models.Application.objects.all()
     serializer = serializers.ApplicationSerializer(objects, many=True)
@@ -29,7 +29,7 @@ def add_application(request):
 
 
 class EditApplication(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser,)
 
     def get_object(self, pk):
         try:
@@ -42,8 +42,6 @@ class EditApplication(APIView):
         serializer = serializers.ApplicationSerializer(application, data=request.data)
 
         if serializer.is_valid():
-            if serializer.data.status == 'PROCESSED':
-                application.response_time = datetime.now()
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 

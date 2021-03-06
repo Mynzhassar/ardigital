@@ -31,4 +31,5 @@ class AdvertisementManager(admin.ModelAdmin):
 
 @admin.register(models.Application)
 class ApplicationManager(admin.ModelAdmin):
-    list_display = ('full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)
+    list_display = (
+        'id', 'full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)

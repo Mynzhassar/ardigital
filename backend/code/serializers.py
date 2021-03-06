@@ -38,7 +38,6 @@ class ConsultationSerializer(serializers.ModelSerializer):
                                      read_only=True)
 
     receipted_time = serializers.DateTimeField(default=timezone.now)
-    response_time = serializers.DateTimeField(allow_null=True)
 
     class Meta:
         model = models.Consultation
@@ -89,10 +88,12 @@ class ApplicationSerializer(serializers.ModelSerializer):
     telephone_number = serializers.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN,
                                              validators=[validators.validate_telephone_number])
 
-    status = serializers.ChoiceField(choices=constants.APPLICATION_STATUS_CHOICES)
+    status = serializers.ChoiceField(choices=constants.APPLICATION_STATUS_CHOICES,
+                                     read_only=True)
+
     receipted_time = serializers.DateTimeField(default=timezone.now)
-    response_time = serializers.DateTimeField(allow_null=True)
 
     class Meta:
-        model = models.Consultation
-        fields = ('full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)
+        model = models.Application
+        fields = (
+            'id', 'full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)

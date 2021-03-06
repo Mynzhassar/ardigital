@@ -10,11 +10,8 @@ def validate_telephone_number(telephone_number):
     telephone_number = telephone_number.replace('+', '')
 
     valid_len = _validate_tel_num_len(telephone_number)
-    print(valid_len)
     valid_operator = _validate_operator(telephone_number)
-    print(valid_operator)
     valid_content = _validate_phone_num_content(telephone_number)
-    print(valid_content)
 
     if not valid_len or not valid_operator or not valid_content:
         raise ValueError('Некорректный номер телефона')
