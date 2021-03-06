@@ -93,5 +93,5 @@ class Application(models.Model):
     objects = models.Manager()
 
     class Meta:
-        verbose_name = 'Заявка',
+        verbose_name = 'Заявка'
         verbose_name_plural = 'Заявки'
