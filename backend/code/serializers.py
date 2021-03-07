@@ -11,7 +11,7 @@ class ProfitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Profit
-        fields = ('id', 'image', 'description',)
+        fields = '__all__'
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Service
-        fields = ('id', 'title', 'image', 'description',)
+        fields = '__all__'
 
 
 class ConsultationSerializer(serializers.ModelSerializer):
@@ -52,7 +52,7 @@ class CaseSerializer(serializers.Serializer):
     link = serializers.URLField(max_length=100)
 
     class Meta:
-        fields = ('image', 'description', 'link',)
+        fields = '__all__'
         abstract = True
 
     def create(self, validated_data):
@@ -95,5 +95,4 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Application
-        fields = (
-            'id', 'full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)
+        fields = '__all__'
