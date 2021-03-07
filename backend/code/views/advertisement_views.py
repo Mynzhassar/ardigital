@@ -16,7 +16,7 @@ def list_advertisements(request):
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def add_advertisement(request):
     serializer = serializers.AdvertisementSerializer(data=request.data)
 
@@ -28,7 +28,7 @@ def add_advertisement(request):
 
 
 class EditAdvertisement(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser, )
 
     def get_object(self, pk):
         try:

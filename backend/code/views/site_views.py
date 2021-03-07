@@ -16,7 +16,7 @@ def list_sites(request):
 
 
 @api_view(['POST'])
-@permission_classes(permissions.IsAdminUser)
+@permission_classes([permissions.IsAdminUser])
 def add_site(request):
     serializer = serializers.SiteSerializer(data=request.data)
 
@@ -28,7 +28,7 @@ def add_site(request):
 
 
 class EditSite(APIView):
-    permission_classes = permissions.IsAdminUser
+    permission_classes = (permissions.IsAdminUser,)
 
     def get_object(self, pk):
         try:

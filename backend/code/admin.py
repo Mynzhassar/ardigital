@@ -21,12 +21,12 @@ class ConsultationManager(admin.ModelAdmin):
 
 @admin.register(models.Site)
 class SiteManager(admin.ModelAdmin):
-    list_display = ('image', 'description', 'link',)
+    list_display = ('id', 'image', 'description', 'link',)
 
 
 @admin.register(models.Advertisement)
 class AdvertisementManager(admin.ModelAdmin):
-    list_display = ('image', 'description', 'link',)
+    list_display = ('id', 'image', 'description', 'link',)
 
 
 @admin.register(models.Application)

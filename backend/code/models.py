@@ -50,15 +50,14 @@ class Consultation(models.Model):
     objects = models.Manager()
 
     class Meta:
-        verbose_name = 'Заявка на консультацию'
-        verbose_name_plural = 'Заявки на консультацию'
+        verbose_name = 'Консультация'
+        verbose_name_plural = 'Консультации'
 
     def __str__(self):
         return self.service.title
 
 
 class Case(models.Model):
-    image = models.ImageField(upload_to='media/cases')
     description = models.TextField(blank=False)
     link = models.URLField()
 
@@ -72,12 +71,16 @@ class Case(models.Model):
 
 
 class Site(Case):
+    image = models.ImageField(upload_to='media/sites')
+
     class Meta:
         verbose_name = 'Сайт'
         verbose_name_plural = 'Сайты'
 
 
 class Advertisement(Case):
+    image = models.ImageField(upload_to='media/advertisements')
+
     class Meta:
         verbose_name = 'Реклама'
         verbose_name_plural = 'Рекламы'
