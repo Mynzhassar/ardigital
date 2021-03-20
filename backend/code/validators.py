@@ -17,6 +17,15 @@ def validate_telephone_number(telephone_number):
         raise ValueError('Некорректный номер телефона')
 
 
+def validate_email(email):
+    if '@' not in email or ' ' in email:
+        raise ValueError('Некорректный email')
+
+    _, mail = email.split('@')
+    if '.' not in mail:
+        raise ValueError('Некорректный email')
+
+
 def _validate_full_name_len(full_name):
     if len(full_name.split()) != constants.VALID_FULL_NAME_LEN:
         raise ValueError('Пожалуйста, введите ваше имя и фамилию')

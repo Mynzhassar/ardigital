@@ -2,6 +2,7 @@ version: "3.3"
 
 services:
   backend:
+    restart: on-failure
     build:
       context: .
       dockerfile: ./docker/Dockerfile

@@ -39,7 +39,8 @@ class Consultation(models.Model):
                                 related_name='services')
 
     full_name = models.CharField(max_length=100)
-    telephone_number = models.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN)
+    telephone_number = models.CharField(max_length=12)
+    email = models.CharField(max_length=100)
     status = models.CharField(max_length=10,
                               choices=constants.CONSULTATION_STATUS_CHOICES,
                               default=constants.STATUS_NEW)
@@ -88,7 +89,8 @@ class Advertisement(Case):
 
 class Application(models.Model):
     full_name = models.CharField(max_length=100)
-    telephone_number = models.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN)
+    telephone_number = models.CharField(max_length=12)
+    email = models.CharField(max_length=100)
     status = models.CharField(max_length=15,
                               choices=constants.APPLICATION_STATUS_CHOICES,
                               default=constants.STATUS_NEW)

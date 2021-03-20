@@ -10,11 +10,11 @@ admin.site.register(models.Advertisement)
 
 @admin.register(models.Consultation)
 class ConsultationManager(admin.ModelAdmin):
-    list_display = ('id', 'service', 'full_name', 'telephone_number', 'status', 'receipted_time',
-                    'response_time',)
+    list_display = ('id', 'service', 'full_name', 'telephone_number', 'email', 'status',
+                    'receipted_time', 'response_time',)
 
 
 @admin.register(models.Application)
 class ApplicationManager(admin.ModelAdmin):
-    list_display = (
-        'id', 'full_name', 'telephone_number', 'status', 'receipted_time', 'response_time',)
+    list_display = ('id', 'full_name', 'telephone_number', 'email', 'status', 'receipted_time',
+                    'response_time',)

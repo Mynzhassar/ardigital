@@ -1,8 +1,10 @@
+from django.core.mail import send_mail
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from . import models, serializers
+from . import models, serializers, constants
 
 
 @api_view(['GET'])
@@ -25,11 +27,17 @@ def add_consultation(request, pk):
         'service_id': pk,
         'full_name': request.data['full_name'],
         'telephone_number': request.data['telephone_number'],
+        'email': request.data['email'],
     }
-    serializer = serializers.ConsultationSerializer(data=data)
 
+    serializer = serializers.ConsultationSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
+        send_mail(subject=constants.CONSULTATION_EMAIL_CONTENT['subject'],
+                  message=constants.CONSULTATION_EMAIL_CONTENT['message'],
+                  from_email=constants.ARDIGITAL_EMAIL,
+                  recipient_list=[request.data['email']], )
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -55,6 +63,10 @@ def add_application(request):
 
     if serializer.is_valid():
         serializer.save()
+        send_mail(subject=constants.APPLICATION_EMAIL_CONTENT['subject'],
+                  message=constants.APPLICATION_EMAIL_CONTENT['message'],
+                  from_email=constants.ARDIGITAL_EMAIL,
+                  recipient_list=[request.data['email']], )
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,7 +7,7 @@ from . import models, validators, constants
 class ProfitSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     image = serializers.ImageField()
-    description = serializers.CharField(max_length=255)
+    description = serializers.CharField()
 
     class Meta:
         model = models.Profit
@@ -16,9 +16,9 @@ class ProfitSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(max_length=100)
+    title = serializers.CharField()
     image = serializers.ImageField()
-    description = serializers.CharField(max_length=255)
+    description = serializers.CharField()
 
     class Meta:
         model = models.Service
@@ -28,28 +28,25 @@ class ServiceSerializer(serializers.ModelSerializer):
 class ConsultationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     service_id = serializers.IntegerField(write_only=True)
-    full_name = serializers.CharField(max_length=100,
-                                      validators=[validators.validate_full_name])
-
-    telephone_number = serializers.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN,
-                                             validators=[validators.validate_telephone_number])
-
-    status = serializers.ChoiceField(choices=constants.CONSULTATION_STATUS_CHOICES,
-                                     read_only=True)
+    full_name = serializers.CharField(validators=[validators.validate_full_name])
+    telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
+    email = serializers.CharField(validators=[validators.validate_email])
+    status = serializers.ChoiceField(read_only=True,
+                                     choices=constants.APPLICATION_STATUS_CHOICES)
 
     receipted_time = serializers.DateTimeField(default=timezone.now)
 
     class Meta:
         model = models.Consultation
-        fields = ('id', 'service_id', 'full_name', 'telephone_number', 'status', 'receipted_time',
-                  'response_time',)
+        fields = ('id', 'service_id', 'full_name', 'telephone_number', 'email', 'status',
+                  'receipted_time', 'response_time',)
 
 
 class CaseSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     image = serializers.ImageField()
-    description = serializers.CharField(max_length=255)
-    link = serializers.URLField(max_length=100)
+    description = serializers.CharField()
+    link = serializers.URLField()
 
     class Meta:
         fields = '__all__'
@@ -82,14 +79,11 @@ class AdvertisementSerializer(CaseSerializer):
 
 class ApplicationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    full_name = serializers.CharField(max_length=100,
-                                      validators=[validators.validate_full_name])
-
-    telephone_number = serializers.CharField(max_length=constants.VALID_PHONE_NUM_MAX_LEN,
-                                             validators=[validators.validate_telephone_number])
-
-    status = serializers.ChoiceField(choices=constants.APPLICATION_STATUS_CHOICES,
-                                     read_only=True)
+    full_name = serializers.CharField(validators=[validators.validate_full_name])
+    telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
+    email = serializers.CharField(validators=[validators.validate_email])
+    status = serializers.ChoiceField(read_only=True,
+                                     choices=constants.APPLICATION_STATUS_CHOICES)
 
     receipted_time = serializers.DateTimeField(default=timezone.now)
 
