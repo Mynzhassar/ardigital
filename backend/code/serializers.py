@@ -6,8 +6,6 @@ from . import models, validators, constants
 
 class ProfitSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    image = serializers.ImageField()
-    description = serializers.CharField()
 
     class Meta:
         model = models.Profit
@@ -16,9 +14,6 @@ class ProfitSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField()
-    image = serializers.ImageField()
-    description = serializers.CharField()
 
     class Meta:
         model = models.Service
