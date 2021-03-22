@@ -17,6 +17,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    command: [ "python3", "-m", "backend.code.worker" ]
+    command: python3 backend/code/worker.py
     volumes:
-      - .:/proj
+      - .:/backend

@@ -1,12 +1,17 @@
+import os
+import django
 import pytz
 import time
 
 from datetime import datetime
 
-from . import models, constants, notifications, utils
-
 
 def send_notification_to_admin(cur_datetime):
+    from . import models, constants, notifications, utils
+
+    if cur_datetime.hour not in constants.HOURS_TO_SEND_EMAIL:
+        return
+
     consultations = models.Consultation.objects.filter(was_sent=False)
     applications = models.Application.objects.filter(was_sent=False)
 
@@ -25,18 +30,14 @@ def run_worker():
     while True:
         try:
             cur_datetime = datetime.utcnow().astimezone(pytz.timezone('Asia/Almaty'))
-
-            if cur_datetime.hour in constants.HOURS_TO_SEND_EMAIL:
-                send_notification_to_admin(cur_datetime)
+            send_notification_to_admin(cur_datetime)
         except Exception as e:
             print(str(e))
 
-        time.sleep(constants.ONE_HOUR)
-
-
-def main():
-    run_worker()
+        time.sleep(60 * 60 * 60)
 
 
 if __name__ == '__main__':
-    main()
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
+    django.setup()
+    run_worker()
