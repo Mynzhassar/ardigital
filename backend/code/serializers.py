@@ -1,4 +1,3 @@
-from django.utils import timezone
 from rest_framework import serializers
 
 from . import models, validators, constants
@@ -25,11 +24,9 @@ class ConsultationSerializer(serializers.ModelSerializer):
     service_id = serializers.IntegerField(write_only=True)
     full_name = serializers.CharField(validators=[validators.validate_full_name])
     telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
-    email = serializers.CharField(validators=[validators.validate_email])
+    email = serializers.CharField(validators=[validators.validate_email_address])
     status = serializers.ChoiceField(read_only=True,
                                      choices=constants.APPLICATION_STATUS_CHOICES)
-
-    receipted_time = serializers.DateTimeField(default=timezone.now)
 
     class Meta:
         model = models.Consultation
@@ -76,11 +73,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     full_name = serializers.CharField(validators=[validators.validate_full_name])
     telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
-    email = serializers.CharField(validators=[validators.validate_email])
+    email = serializers.CharField(validators=[validators.validate_email_address])
     status = serializers.ChoiceField(read_only=True,
                                      choices=constants.APPLICATION_STATUS_CHOICES)
-
-    receipted_time = serializers.DateTimeField(default=timezone.now)
 
     class Meta:
         model = models.Application
