@@ -32,3 +32,9 @@ APPLICATION_EMAIL_CONTENT = {
     'subject': 'Ваша заявка успешно сформирована!',
     'message': 'Ваша заявка успешно сформирована! С Вами свяжутся в ближайшее время.',
 }
+
+HOURS_TO_SEND_EMAIL = {0, 3, 6, 9, 12, 15, 18, 21, }
+
+ONE_HOUR = 60 * 60 * 60
+
+EMAIL_SEND_PERIOD_HOURS = 3

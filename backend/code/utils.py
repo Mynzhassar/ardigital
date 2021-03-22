@@ -1,0 +1,31 @@
+from datetime import datetime, timedelta
+from . import constants
+
+
+def generate_admin_text(time, consultations_count, applications_count):
+    subject = f'Количество новых заявок за {_format_time(time)}'
+
+    if consultations_count and applications_count:
+        message = f'Число новых заявок на консультацию: {consultations_count}. ' \
+                  f'Число новых заявок: {applications_count}.'
+
+    if consultations_count:
+        message = f'Число новых заявок на консультацию: {consultations_count}.'
+    if applications_count:
+        message = f'Число новых заявок: {applications_count}.'
+
+    return {
+        'subject': subject,
+        'message': message,
+    }
+
+
+def _format_time(time):
+    # e.g. с 2021-01-26 13:00:00 по 2021-01-26 13:59:59
+    time = time - timedelta(hours=1)
+    date_to = datetime(year=time.year, month=time.month, day=time.day, hour=time.hour,
+                       minute=59, second=59)
+
+    date_from = date_to - timedelta(hours=constants.EMAIL_SEND_PERIOD_HOURS) + timedelta(seconds=1)
+
+    return date_from, date_to

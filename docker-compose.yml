@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  backend:
+  ardigital-server:
     restart: on-failure
     build:
       context: .
@@ -11,3 +11,12 @@ services:
       - .:/backend
     ports:
       - "8000:8000"
+
+  ardigital-worker:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    command: [ "python3", "-m", "backend.code.worker" ]
+    volumes:
+      - .:/proj

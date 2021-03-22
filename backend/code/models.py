@@ -47,6 +47,7 @@ class Consultation(models.Model):
 
     receipted_time = models.DateTimeField(default=timezone.now)
     response_time = models.DateTimeField(null=True)
+    was_notified = models.BooleanField(default=False)
 
     objects = models.Manager()
 
@@ -97,6 +98,7 @@ class Application(models.Model):
 
     receipted_time = models.DateTimeField(default=timezone.now)
     response_time = models.DateTimeField(null=True)
+    was_notified = models.BooleanField(default=False)
 
     objects = models.Manager()
 
