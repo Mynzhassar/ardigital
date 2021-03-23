@@ -26,9 +26,8 @@ def send_notification_to_admin(cur_datetime):
 
 @task(schedule=constants.TEN_MINUTES)
 def run_worker():
-    while True:
-        try:
-            cur_datetime = datetime.utcnow().astimezone(pytz.timezone('Asia/Almaty'))
-            send_notification_to_admin(cur_datetime)
-        except Exception as e:
-            print(str(e))
+    try:
+        cur_datetime = datetime.utcnow().astimezone(pytz.timezone('Asia/Almaty'))
+        send_notification_to_admin(cur_datetime)
+    except Exception as e:
+        print(str(e))

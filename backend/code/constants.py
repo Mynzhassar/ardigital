@@ -20,7 +20,7 @@ APPLICATION_STATUS_CHOICES = (
 
 STATUS_NEW = 'NEW'
 
-ARDIGITAL_EMAIL = '***'  # TODO
+ARDIGITAL_EMAIL = 'info@ardigital.kz'
 
 CONSULTATION_EMAIL_CONTENT = {
     'subject': 'Ваша заявка успешно сформирована!',

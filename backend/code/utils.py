@@ -3,7 +3,8 @@ from . import constants
 
 
 def generate_admin_text(time, consultations_count, applications_count):
-    subject = f'Количество новых заявок за {_format_time(time)}'
+    date_from, date_to = _format_time(time)
+    subject = f'Количество новых заявок c {date_from} по {date_to}'
 
     if consultations_count and applications_count:
         message = f'Число новых заявок на консультацию: {consultations_count}. ' \

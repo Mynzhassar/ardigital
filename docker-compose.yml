@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    command: python3 backend/manage.py runserver
+    command: python3 backend/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/backend
     ports:
