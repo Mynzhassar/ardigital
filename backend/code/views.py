@@ -1,8 +1,12 @@
+import logging
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from . import models, serializers, constants, notifications
+
+LOGGER = logging.getLogger(__name__)
 
 
 @api_view(['GET'])
@@ -32,9 +36,13 @@ def add_consultation(request, pk):
     if serializer.is_valid():
         serializer.save()
         notifications.send_email(constants.CONSULTATION_EMAIL_CONTENT, request.data['email'])
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        LOGGER.info('consultation_email_sent')
+        return Response(status=status.HTTP_201_CREATED)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    LOGGER.error('failed_to_add_consultation', extra={
+        'errors': serializer.errors,
+    })
+    return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
@@ -58,6 +66,10 @@ def add_application(request):
     if serializer.is_valid():
         serializer.save()
         notifications.send_email(constants.APPLICATION_EMAIL_CONTENT, request.data['email'])
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        LOGGER.info('application_email_sent')
+        return Response(status=status.HTTP_201_CREATED)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    LOGGER.error('failed_to_add_application', extra={
+        'errors': serializer.errors,
+    })
+    return Response(status=status.HTTP_400_BAD_REQUEST)

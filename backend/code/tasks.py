@@ -1,9 +1,12 @@
+import logging
 import pytz
 
 from datetime import datetime
 from workers import task
 
 from . import models, constants, notifications, utils
+
+LOGGER = logging.getLogger(__name__)
 
 
 def send_notification_to_admin(cur_datetime):
@@ -30,4 +33,4 @@ def run_worker():
         cur_datetime = datetime.utcnow().astimezone(pytz.timezone('Asia/Almaty'))
         send_notification_to_admin(cur_datetime)
     except Exception as e:
-        print(str(e))
+        LOGGER.exception(str(e))
