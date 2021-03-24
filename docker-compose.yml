@@ -2,9 +2,6 @@ version: "3.3"
 
 x-environment-vars: &environment-vars
   DATABASE_URL: postgres://postgres:postgres@ardigital-db/postgres
-  DJANGO_DEFAULT_SUPERUSER_NAME: admin
-  DJANGO_DEFAULT_SUPERUSER_EMAIL: admin@admin.admin
-  DJANGO_DEFAULT_SUPERUSER_PASSWORD: admin
 
 services:
   ardigital-db:

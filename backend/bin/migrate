@@ -1,4 +1,0 @@
-#!/bin/bash
-
-python /backend/manage.py migrate
-python /backend/manage.py inituser
