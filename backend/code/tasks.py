@@ -21,7 +21,7 @@ def send_notification_to_admin(cur_datetime):
 
     notifications.send_email(
         utils.generate_admin_text(cur_datetime, consultations.count(), applications.count()),
-        constants.ARDIGITAL_EMAIL)
+        constants.ARDIGITAL_EMAIL,)
 
     consultations.update(was_notified=True)
     applications.update(was_notified=True)

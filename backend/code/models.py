@@ -43,7 +43,7 @@ class Consultation(models.Model):
     email = models.CharField(max_length=100)
     status = models.CharField(max_length=10,
                               choices=constants.CONSULTATION_STATUS_CHOICES,
-                              default=constants.STATUS_NEW)
+                              default=constants.STATUS_NEW,)
 
     receipted_time = models.DateTimeField(default=timezone.now)
     response_time = models.DateTimeField(null=True)
@@ -94,7 +94,7 @@ class Application(models.Model):
     email = models.CharField(max_length=100)
     status = models.CharField(max_length=15,
                               choices=constants.APPLICATION_STATUS_CHOICES,
-                              default=constants.STATUS_NEW)
+                              default=constants.STATUS_NEW,)
 
     receipted_time = models.DateTimeField(default=timezone.now)
     response_time = models.DateTimeField(null=True)

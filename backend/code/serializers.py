@@ -26,7 +26,7 @@ class ConsultationSerializer(serializers.ModelSerializer):
     telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
     email = serializers.CharField(validators=[validators.validate_email_address])
     status = serializers.ChoiceField(read_only=True,
-                                     choices=constants.APPLICATION_STATUS_CHOICES)
+                                     choices=constants.APPLICATION_STATUS_CHOICES,)
 
     class Meta:
         model = models.Consultation
@@ -75,7 +75,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
     telephone_number = serializers.CharField(validators=[validators.validate_telephone_number])
     email = serializers.CharField(validators=[validators.validate_email_address])
     status = serializers.ChoiceField(read_only=True,
-                                     choices=constants.APPLICATION_STATUS_CHOICES)
+                                     choices=constants.APPLICATION_STATUS_CHOICES,)
 
     class Meta:
         model = models.Application
