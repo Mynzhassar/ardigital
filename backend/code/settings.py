@@ -1,5 +1,3 @@
-import dj_database_url
-
 from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
@@ -53,7 +51,13 @@ TEMPLATES = [
 ]
 
 DATABASES = {
-    'default': dj_database_url.config(env='DATABASE_URL'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT'),
+    }
 }
 
 LANGUAGE_CODE = 'en-us'
