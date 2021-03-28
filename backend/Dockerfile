@@ -1,9 +1,9 @@
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
-
-COPY backend/requirements.txt /
+COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
-WORKDIR /backend
-COPY . /backend/
+RUN mkdir /code
+WORKDIR /code
+COPY . /code/
