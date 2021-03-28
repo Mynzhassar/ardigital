@@ -2,5 +2,4 @@ envs
 .idea
 __pycache__
 media
-node_modules
 .env
