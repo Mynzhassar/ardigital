@@ -9,10 +9,10 @@ services:
     restart: on-failure
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: backend/Dockerfile
     command: python3 backend/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/backend
+      - ./backend:/code
     depends_on:
       - ardigital-db
     ports:
@@ -22,9 +22,9 @@ services:
     restart: on-failure
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: backend/Dockerfile
     command: python3 backend/manage.py runworkers
     volumes:
-      - .:/backend
+      - ./backend:/code
     depends_on:
       - ardigital-db
