@@ -1,0 +1,11 @@
+<h2>Services</h2>
+
+<ul>
+  <li *ngFor="let service of services$ | async">
+    <ul>
+      <li>Title: {{ service.title }}</li>
+      <li>Image: {{ service.image }}</li>
+      <li>Description: {{ service.description }}</li>
+    </ul>
+  </li>
+</ul>
