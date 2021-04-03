@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
-import {ServicesService} from '../services.service';
-import {Profit} from '../models';
+import {ServicesService} from '../services/services.service';
+import {Profit} from '../models/models';
 
 @Component({
   selector: 'app-components',
