@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
-import {ProfitService} from '../../services/profit/profit.service';
+import {ProviderService} from '../../services/provider.service';
 import {Profit} from '../../models/models';
 
 @Component({
@@ -13,7 +13,7 @@ import {Profit} from '../../models/models';
 export class ProfitComponent implements OnInit {
   profits$ !: Observable<Profit[]>;
 
-  constructor(private profitService: ProfitService) {
+  constructor(private provider: ProviderService) {
   }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class ProfitComponent implements OnInit {
   }
 
   public getProfits() {
-    this.profits$ = this.profitService.getProfits();
+    this.profits$ = this.provider.getProfits();
   }
 
 }
