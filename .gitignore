@@ -3,3 +3,6 @@ envs
 __pycache__
 media
 .env
+
+dist
+node_modules
