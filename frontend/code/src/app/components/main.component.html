@@ -1,4 +1,4 @@
-<h2>Profits</h2>
+<h2>Что вы получаете работая с нами</h2>
 
 <ul>
   <li *ngFor="let profit of profits">
@@ -9,9 +9,7 @@
   </li>
 </ul>
 
-<br><br>
-
-<h2>Services</h2>
+<h2>Услуги</h2>
 
 <ul>
   <li *ngFor="let service of services">
@@ -20,5 +18,11 @@
       <li>Description: {{ service.description }}</li>
       <li>Image: {{ service.image }}</li>
     </ul>
+    <div>
+      <input type="text" [(ngModel)]="full_name" />
+      <input type="text" [(ngModel)]="telephone_number" />
+      <input type="text" [(ngModel)]="email" />
+      <button (click)="addConsultation(service.id)">Получить консультацию</button>
+    </div>
   </li>
 </ul>
