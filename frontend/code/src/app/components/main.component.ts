@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
   }
 
   public addConsultation(service_id: number) {
-    
+
     this.provider.addConsultation(service_id, this.consultation_full_name, this.consultation_telephone_number,
       this.consultation_email).then(res => {
       this.consultation_full_name = ''
