@@ -1,0 +1,24 @@
+<h2>Profits</h2>
+
+<ul>
+  <li *ngFor="let profit of profits">
+    <ul>
+      <li>Image: {{ profit.image }}</li>
+      <li>Description: {{ profit.description }}</li>
+    </ul>
+  </li>
+</ul>
+
+<br><br>
+
+<h2>Services</h2>
+
+<ul>
+  <li *ngFor="let service of services">
+    <ul>
+      <li>Title: {{ service.title }}</li>
+      <li>Description: {{ service.description }}</li>
+      <li>Image: {{ service.image }}</li>
+    </ul>
+  </li>
+</ul>

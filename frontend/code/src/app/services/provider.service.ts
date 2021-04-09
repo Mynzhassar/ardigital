@@ -1,23 +1,23 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {MainService} from "./main.service";
 import {Profit, Service} from '../models/models';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProviderService {
+export class ProviderService extends MainService{
   API_URL = 'http://localhost:80/api'
 
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
+    super(http)
   }
 
-  public getProfits(): Observable<Profit[]> {
-    return this.http.get<Profit[]>(`${this.API_URL}/profits`)
+  public getProfits(): Promise<Profit[]> {
+    return this.get(`${this.API_URL}/profits`, {})
   }
 
-  public getServices(): Observable<Service[]> {
-    return this.http.get<Service[]>(`${this.API_URL}/services`)
+  public getServices(): Promise<Service[]> {
+    return this.get(`${this.API_URL}/services`, {})
   }
 }
