@@ -19,10 +19,41 @@
       <li>Image: {{ service.image }}</li>
     </ul>
     <div>
-      <input type="text" [(ngModel)]="full_name" />
-      <input type="text" [(ngModel)]="telephone_number" />
-      <input type="text" [(ngModel)]="email" />
+      <input type="text" [(ngModel)]="consultation_full_name" />
+      <input type="text" [(ngModel)]="consultation_telephone_number" />
+      <input type="text" [(ngModel)]="consultation_email" />
       <button (click)="addConsultation(service.id)">Получить консультацию</button>
     </div>
   </li>
 </ul>
+
+<h2>Сайты</h2>
+
+<ul>
+  <li *ngFor="let site of sites">
+    <ul>
+      <li>Image: {{ site.image }}</li>
+      <li>Description: {{ site.description }}</li>
+      <li>Link: {{ site.link }}</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Реклама</h2>
+
+<ul>
+  <li *ngFor="let advertisement of advertisements">
+    <ul>
+      <li>Image: {{ advertisement.image }}</li>
+      <li>Description: {{ advertisement.description }}</li>
+      <li>Link: {{ advertisement.link }}</li>
+    </ul>
+  </li>
+</ul>
+
+<div>
+  <input type="text" [(ngModel)]="application_full_name" />
+  <input type="text" [(ngModel)]="application_telephone_number" />
+  <input type="text" [(ngModel)]="application_email" />
+  <button (click)="addApplication()">Отправить</button>
+</div>
