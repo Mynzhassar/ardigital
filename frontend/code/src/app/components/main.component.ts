@@ -48,9 +48,7 @@ export class MainComponent implements OnInit {
   }
 
   public addConsultation(service_id: number) {
-
-    this.provider.addConsultation(service_id, this.consultation_full_name, this.consultation_telephone_number,
-      this.consultation_email).then(res => {
+    this.provider.addConsultation(service_id, this.consultation_full_name, this.consultation_telephone_number, this.consultation_email).then(res => {
       this.consultation_full_name = ''
       this.consultation_telephone_number = ''
       this.consultation_email = ''
@@ -71,8 +69,7 @@ export class MainComponent implements OnInit {
   }
 
   public addApplication() {
-    this.provider.addApplication(this.application_full_name, this.application_telephone_number,
-      this.application_email).then(res => {
+    this.provider.addApplication(this.application_full_name, this.application_telephone_number, this.application_email).then(res => {
       this.application_full_name = ''
       this.application_telephone_number = ''
       this.application_email = ''
