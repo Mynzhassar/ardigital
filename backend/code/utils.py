@@ -28,5 +28,4 @@ def _format_time(time):
                        hour=time.hour, minute=59, second=59)
 
     date_from = date_to - timedelta(hours=constants.EMAIL_SEND_PERIOD_HOURS) + timedelta(seconds=1)
-
     return date_from, date_to
