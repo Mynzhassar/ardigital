@@ -1,7 +1,7 @@
 <h2>Что вы получаете работая с нами</h2>
 
 <ul>
-  <li *ngFor="let profit of profits">
+  <li *ngFor="let profit of profits | async">
     <ul>
       <li>Image: {{ profit.image }}</li>
       <li>Description: {{ profit.description }}</li>
@@ -12,7 +12,7 @@
 <h2>Услуги</h2>
 
 <ul>
-  <li *ngFor="let service of services">
+  <li *ngFor="let service of services | async">
     <ul>
       <li>Title: {{ service.title }}</li>
       <li>Description: {{ service.description }}</li>
@@ -30,7 +30,7 @@
 <h2>Сайты</h2>
 
 <ul>
-  <li *ngFor="let site of sites">
+  <li *ngFor="let site of sites | async">
     <ul>
       <li>Image: {{ site.image }}</li>
       <li>Description: {{ site.description }}</li>
@@ -42,7 +42,7 @@
 <h2>Реклама</h2>
 
 <ul>
-  <li *ngFor="let advertisement of advertisements">
+  <li *ngFor="let advertisement of advertisements | async">
     <ul>
       <li>Image: {{ advertisement.image }}</li>
       <li>Description: {{ advertisement.description }}</li>
