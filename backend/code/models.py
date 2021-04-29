@@ -5,7 +5,7 @@ from . import constants
 
 
 class Profit(models.Model):
-    image = models.ImageField(upload_to='media/profits')
+    image = models.ImageField(upload_to='profits')
     description = models.TextField(blank=False)
 
     objects = models.Manager()
@@ -20,7 +20,7 @@ class Profit(models.Model):
 
 class Service(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='media/services')
+    image = models.ImageField(upload_to='services')
     description = models.TextField(blank=False)
 
     objects = models.Manager()
@@ -73,7 +73,7 @@ class Case(models.Model):
 
 
 class Site(Case):
-    image = models.ImageField(upload_to='media/sites')
+    image = models.ImageField(upload_to='sites')
 
     class Meta:
         verbose_name = 'Сайт'
@@ -81,7 +81,7 @@ class Site(Case):
 
 
 class Advertisement(Case):
-    image = models.ImageField(upload_to='media/advertisements')
+    image = models.ImageField(upload_to='advertisements')
 
     class Meta:
         verbose_name = 'Реклама'

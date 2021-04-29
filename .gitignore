@@ -1,7 +1,6 @@
 envs
 .idea
 __pycache__
-media
 .env
 
 dist

@@ -13,6 +13,8 @@ import {takeUntil} from "rxjs/operators";
 
 export class MainComponent implements OnInit, OnDestroy {
 
+  public API_URL = "http://localhost:80";
+
   public profits: Observable<Profit[]> | undefined;
   public services: Observable<Service[]> | undefined;
   public sites: Observable<Site[]> | undefined
