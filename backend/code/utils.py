@@ -10,9 +10,9 @@ def generate_admin_text(time, consultations_count, applications_count):
         message = f'Число новых заявок на консультацию: {consultations_count}. ' \
                   f'Число новых заявок: {applications_count}.'
 
-    if consultations_count:
+    elif consultations_count:
         message = f'Число новых заявок на консультацию: {consultations_count}.'
-    if applications_count:
+    else:
         message = f'Число новых заявок: {applications_count}.'
 
     return {
