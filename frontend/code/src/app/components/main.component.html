@@ -1,65 +1,97 @@
 <h2>Что вы получаете работая с нами</h2>
 
-<ul>
-  <li *ngFor="let profit of profits | async">
-    <ul>
-      <img src="{{API_URL}}{{profit.image}}">
-      <li>{{ profit.description }}</li>
-    </ul>
-  </li>
-</ul>
+<div class="profits-grid">
+
+  <ng-container *ngFor="let profit of profits | async">
+
+    <div class="profit-container">
+
+      <img src="{{apiUrl}}{{profit.image}}">
+      <p> {{profit.description}} </p>
+
+    </div>
+
+  </ng-container>
+
+</div>
+
 
 <h2>Услуги</h2>
 
-<ul>
-  <li *ngFor="let service of services | async">
-    <ul>
-      <li>{{ service.title }}</li>
-      <img src="{{API_URL}}{{service.image}}">
-      <li>{{ service.description }}</li>
-    </ul>
-    <div>
-      Ваше имя:
-      <input type="text" [(ngModel)]="consultation_full_name" />
-      Ваш номер:
-      <input type="text" [(ngModel)]="consultation_telephone_number" />
-      Ваша почта:
-      <input type="text" [(ngModel)]="consultation_email" />
-      <button (click)="addConsultation(service.id)">Получить консультацию</button>
+<div class="services-grid">
+
+  <ng-container *ngFor="let service of services | async">
+
+    <div class="service-container">
+
+      <img src="{{apiUrl}}{{service.image}}">
+      <h6> {{service.title}} </h6>
+      <p> {{service.description}} </p>
+
     </div>
-  </li>
-</ul>
 
-<h2>Сайты</h2>
+  </ng-container>
 
-<ul>
-  <li *ngFor="let site of sites | async">
-    <ul>
-      <img src="{{API_URL}}{{site.image}}">
-      <li>{{ site.description }}</li>
-      <a href="{{site.link}}">Перейти</a>
-    </ul>
-  </li>
-</ul>
+</div>
 
-<h2>Реклама</h2>
 
-<ul>
-  <li *ngFor="let advertisement of advertisements | async">
-    <ul>
-      <img src="{{API_URL}}{{advertisement.image}}">
-      <li>{{ advertisement.description }}</li>
-      <a href="{{advertisement.link}}">Перейти</a>
-    </ul>
-  </li>
-</ul>
+<h2>Кейсы</h2>
 
-<div>
-  Ваше имя:
-  <input type="text" [(ngModel)]="application_full_name" />
-  Ваш номер:
-  <input type="text" [(ngModel)]="application_telephone_number" />
-  Ваша почта:
-  <input type="text" [(ngModel)]="application_email" />
+<div id="case-button-outer">
+  <div class="case-button-inner"> <button (click)="showSites()">Простой сайт</button> </div>
+  <div class="case-button-inner"> <button (click)="showAdvertisements()">Реклама в Instagram и Facebook</button> </div>
+</div>
+
+<ng-container *ngIf="showCase == 'sites'">
+
+  <div class="cases-grid">
+
+    <ng-container *ngFor="let site of sites | async">
+
+      <div class="case-container">
+
+        <img src="{{apiUrl}}{{site.image}}">
+        <p> {{site.description}} </p>
+        <a href="{{site.link}}">Перейти</a>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="showCase == 'advertisements'">
+
+  <div class="cases-grid">
+
+    <ng-container *ngFor="let advertisement of advertisements | async">
+
+      <div class="case-container">
+
+        <img src="{{apiUrl}}{{advertisement.image}}">
+        <p> {{advertisement.description}} </p>
+        <a href="{{advertisement.link}}">Перейти</a>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</ng-container>
+
+
+<div class="contact-form">
+  <p type="Ваше имя:">
+    <input type="text" [(ngModel)]="applicationFullName" placeholder="Введите ваше имя"/>
+  </p>
+  <p type="Ваш номер:">
+    <input type="text" [(ngModel)]="applicationTelephoneNumber" placeholder="Введите ваш телефон"/>
+  </p>
+  <p type="Ваш email:">
+    <input type="text" [(ngModel)]="applicationEmail" placeholder="Введите ваш email"/>
+  </p>
   <button (click)="addApplication()">Отправить</button>
 </div>

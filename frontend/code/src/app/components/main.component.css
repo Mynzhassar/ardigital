@@ -1,0 +1,48 @@
+.profits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.profit-container {
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.service-container {
+  text-align: center;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.case-container {
+  text-align: center;
+}
+
+#case-button-outer
+{
+  width:100%;
+  text-align: center;
+}
+.case-button-inner
+{
+  display: inline-block;
+}
+
+.contact-form {
+  width: 340px;
+  height: 320px;
+  box-shadow: 0 0 40px -10px #000;
+  margin: calc(40vh - 230px) auto 0 820px;
+  padding: 20px 30px;
+}
+
+p:before {
+  content: attr(type);
+}
