@@ -41,7 +41,8 @@ export class MainComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getProfits();
     this.getServices();
-    this.getCases(this.showCase);
+    this.getSites();
+    this.getAdvertisements();
   }
 
   public getProfits() {
@@ -69,23 +70,12 @@ export class MainComponent implements OnInit, OnDestroy {
     this.advertisements = this.provider.getAdvertisements();
   }
 
-  public getCases(current_case: string) {
-    if (current_case == 'sites') {
-      this.getSites();
-    }
-    if (current_case == 'advertisements') {
-      this.getAdvertisements();
-    }
-  }
-
   public showSites() {
     this.showCase = 'sites';
-    this.getCases(this.showCase);
   }
 
   public showAdvertisements() {
     this.showCase = 'advertisements';
-    this.getCases(this.showCase);
   }
 
   public addApplication() {
