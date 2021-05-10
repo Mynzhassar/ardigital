@@ -5,7 +5,6 @@ from . import constants
 
 
 class Profit(models.Model):
-    image = models.ImageField(upload_to='profits')
     description = models.TextField(blank=False)
 
     objects = models.Manager()
