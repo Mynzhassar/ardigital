@@ -11,6 +11,70 @@ body{
 	margin: 0;
 }
 
+.this-form-goi input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+this-form-goi .btn{
+	font-size: 18px;
+	padding: 14px 36px;
+	margin: 10px 0;
+}
+
+
+.that-class-center {
+    display: block;
+    overflow: auto;
+}
+
+.to-fit {
+    width: fit-content;
+    block-size: fit-content;
+}
+
+.this-div {
+    background-color: #fafafa;
+}
+
+.for-img {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+
+.over {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.over img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.to-color {
+    background: #fafafa;
+}
+
+.that-image {
+    height: 300px;
+    width: 380px;
+    align-items: center;
+}
+
+.inside-box {
+    align-items: center;
+    height: 300px;
+    width: 300px;
+}
+
 .service-box {
     width: 90%;
 }
@@ -150,11 +214,16 @@ img{
 }
 
 .bg-white{
-	background: #fff;
+	background-color: #fafafa;
 }
 
 .h-100{
-	height: 100%;
+	height: 90%;
+	width: 90%;
+}
+
+.h-100 img {
+    position: center;
 }
 
 section{
@@ -358,6 +427,7 @@ h1, h2{
 .section4 > div{
 	position: relative;
 	z-index: 1;
+	display: inline-block;
 }
 
 .section4{
@@ -455,11 +525,9 @@ body .fancybox-content{
 		padding: 30px 0;
 	}
 	.section3_img{
-		position: absolute;
-		top: 80px;
-		left: -100px;
-		max-width: 300px;
-		z-index: -1;
+		position: center;
+		width: 300px;
+		height: 100px;
 	}
 }
 
@@ -499,6 +567,7 @@ body .fancybox-content{
 		margin: auto;
 	}
 	.section4 img{
+	    position: center;
 		max-width: 300px;
 		margin-top: -30px;
 	}
@@ -578,11 +647,12 @@ html {
 }
 
 .container {
-  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  width: fit-content;
+  block-size: fit-content;
 }
 
 @media (min-width: 576px) {
@@ -676,14 +746,12 @@ html {
   grid-template-columns: repeat(3, 1fr);
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -35px;
   height: 400px;
 }
 
 .case-box {
-    width: 350px;
-    height: 350px;
+    display: center;
 }
 
 
@@ -2847,7 +2915,9 @@ html {
   padding-right: 0 !important;
 }
 
-.pb-0,
+.pb-0 {
+    display-block: inline;
+}
 .py-0 {
   padding-bottom: 0 !important;
 }

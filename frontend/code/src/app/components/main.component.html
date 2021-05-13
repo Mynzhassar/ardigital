@@ -1,141 +1,197 @@
 <body>
-    <header>
-		<div class="container">
-			<div class="d-flex justify-content-between align-items-center">
-				<div class="logo">
-					<a href="index.html">
-						<img src="assets/logoblack.png" alt="logo">
-					</a>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="#about">О нас</a></li>
-						<li><a href="#works">Наши работы</a></li>
-						<li><a href="#contacts">Контакты</a></li>
-					</ul>
-				</nav>
-				<div class="d-md-none d-block">
-					<div class="burger"><span></span></div>
-				</div>
-			</div>
+<header>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logoblack.png" alt="logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#works">Наши работы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="d-md-none d-block">
+                <div class="burger"><span></span></div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="section1 d-flex flex-column">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-md-7 my-3 align-self-center order-md-1 order-2">
+                    <p class="subtitle"><b>Маркетинг. Создание сайтов. Автоматизация</b></p>
+                    <h1>Увеличь прибыль бизнеса в 2-3 раза, внедрив актуальные инструменты
+                        маркетинга</h1>
+                    <p class="subtitle">Станьте нашим партнером и мы выведем <br>вашу компанию на
+                        новый уровень</p>
+                    <a href="#contacts" class="btn mt-4">узнать подробнее</a>
+                </div>
+                <div class="col-md-5 my-3 align-self-center order-md-2 order-1">
+                    <img src="assets/Saly-1.png" alt="main pic" class="mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="section2 text-center">
+        <div class="container">
+            <h2 class="text-center">Что вы получаете работая с нами ?</h2>
+            <div class="profits-grid">
+                <ng-container *ngFor="let profit of profits | async">
+                    <div class="profit-box">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"
+                             x="0" y="0" viewBox="0 0 512 512"
+                             style="enable-background:new 0 0 512 512" xml:space="preserve"
+                             class="">  <g xmlns="http://www.w3.org/2000/svg"><path d="M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z" fill="#f64f4f" data-original="#000000" style="" class=""/>
+                            <path d="M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z"
+                                  fill="#f64f4f" data-original="#000000" style=""
+                                  class=""/></g></svg>
+                        <br><br>
+                        <p>{{profit.description}}</p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </section>
+    <section class="section3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column h-100">
+                        <h2>Услуги</h2>
+                        <div class="my-auto">
+                            <img src="assets/Saly-2.webp" class="section3_img" alt="img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="services-grid">
+                        <ng-container *ngFor="let service of services | async">
+                            <div class="service-box my-3">
+                                <div class="box d-flex flex-column h-100">
+                                    <img src="{{apiUrl}}{{service.image}}" alt=""
+                                         class="mx-auto d-sm-block d-none">
+                                    <br>
+                                    <div class="mt-auto">
+                                        <div class="d-flex justify-content-between">
+                                            <h3>{{service.title}}</h3>
+                                            <br>
+                                            <img src="{{apiUrl}}{{service.image}}" alt=""
+                                                 class="d-sm-none d-block">
+                                        </div>
+                                        <p>{{service.description}}</p>
+                                        <br>
+                                        <a data-fancybox data-src="#callback" href="javascript:;" class="btn">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ →</a>
+                                        <form ng-show="showForm">
+                                            First Name: <input type="text">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="that-class-center pb-0">
+        <div class="container">
+            <h2 class="text-center">Кейсы</h2>
+            <p class="subtitle text-center">Примеры сайтов и проектов, которые приносят <br>прибыль
+                нашим заказчикам</p>
+            <div class="d-flex flex-wrap tab my-4">
+                <button class="tablinks" (click)="showSites()" id="defaultOpen">Простой сайт
+                </button>
+                <button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и
+                    Facebook
+                </button>
+            </div>
+        </div>
+
+        <div>
+            <div class="container">
+                <ng-container *ngIf="showCase == 'sites'">
+                    <div class="cases-grid">
+                        <ng-container *ngFor="let site of sites | async">
+                            <div class="my-3">
+                                <div class="d-flex flex-column h-100 this-div">
+                                    <img class="that-image" src="{{apiUrl}}{{site.image}}" alt="img">
+                                    <div class="d-flex flex-column p-4 h-100">
+                                        <h5 class="m-0 mb-3">{{site.description}}</h5>
+                                        <div class="mt-auto">
+                                            <a href="{{site.link}}" class="btn">ПЕРЕЙТИ → </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="showCase == 'advertisements'">
+                    <div class="cases-grid">
+                        <ng-container *ngFor="let advertisement of advertisements | async">
+                            <div class="my-3">
+                                <div class="d-flex flex-column h-100 this-div">
+                                    <img class="that-image" src="{{apiUrl}}{{advertisement.image}}" alt="img">
+                                    <div class="d-flex flex-column p-4 h-100">
+                                        <h5 class="m-0 mb-3">{{advertisement.description}}</h5>
+                                        <div class="mt-auto">
+                                            <a href="{{advertisement.link}}" class="btn">ПЕРЕЙТИ → </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </section>
+    <section id="contacts" class="section4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="h2 line">Оставь заявку прямо сейчас и получи <br><span>СКИДКУ 15%</span></div>
+                    <img src="assets/Saly-31.webp" alt="img" class="mx-auto d-md-block d-none">
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <div class="box my-3 this-form-goi">
+                            <div>Ваше имя</div>
+                            <input type="text" [(ngModel)]="applicationFullName" placeholder="Введите ваше имя"/>
+                            <div>Ваш email</div>
+                            <input type="email" [(ngModel)]="applicationEmail" placeholder="Введите ваш email"/>
+                            <div>Ваш телефон</div>
+                            <input type="tel" [(ngModel)]="applicationTelephoneNumber" placeholder="+7 (777) 777-77-77" id="phone"/>
+                            <div class="text-center">
+                                <button (click)="addApplication()" class="btn">Отправить</button>
+                            </div>
+                    </div>
+                    <img src="assets/Saly-31.png" alt="img" class="mx-auto d-md-none d-block">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div style="display: none;max-width: 500px;width: 100%;margin: auto;" id="callback">
+	<div class="h2 text-center my-3">Узнать подробнее</div>
+	<form action="">
+		<div>Ваше имя</div>
+		<input type="tel" placeholder="Введите ваше имя" required="">
+		<div>Ваш телефон</div>
+		<input type="tel" placeholder="+7 (999) 999-99-99" id="phone">
+		<div class="text-center">
+			<button type="submit" class="btn">отправить</button>
 		</div>
-	</header>
-	<main>
-		<section class="section1 d-flex flex-column">
-			<div class="container my-auto">
-				<div class="row">
-					<div class="col-md-7 my-3 align-self-center order-md-1 order-2">
-						<p class="subtitle"><b>Маркетинг. Создание сайтов. Автоматизация</b></p>
-						<h1>Увеличь прибыль бизнеса в 2-3 раза, внедрив актуальные инструменты маркетинга</h1>
-						<p class="subtitle">Станьте нашим партнером и мы выведем <br>вашу компанию на новый уровень</p>
-						<a href="#contacts" class="btn mt-4">узнать подробнее</a>
-					</div>
-					<div class="col-md-5 my-3 align-self-center order-md-2 order-1">
-						<img src="assets/Saly-1.png" alt="main pic" class="mx-auto">
-					</div>
-				</div>
-			</div>
-		</section>
-		<section id="about" class="section2 text-center">
-			<div class="container">
-				<h2 class="text-center">Что вы получаете работая с нами ?</h2>
-				<div class="profits-grid">
-					<ng-container *ngFor="let profit of profits | async">
-						<div class="profit-box">
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">  <g xmlns="http://www.w3.org/2000/svg"><path d="M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z" fill="#f64f4f" data-original="#000000" style="" class=""/><path d="M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z" fill="#f64f4f" data-original="#000000" style="" class=""/></g></svg>
-							<br><br>
-							<p>{{profit.description}}</p>
-						</div>
-					</ng-container>
-				</div>
-			</div>
-		</section>
-		<section class="section3">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="d-flex flex-column h-100">
-							<h2>Услуги</h2>
-							<div class="my-auto">
-								<img src="assets/Saly-2.webp" class="section3_img" alt="img">
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-8">
-						<div class="services-grid">
-							<ng-container *ngFor="let service of services | async">
-								<div class="service-box my-3">
-									<div class="box d-flex flex-column h-100">
-										<img src="{{apiUrl}}{{service.image}}" alt="" class="mx-auto d-sm-block d-none">
-										<br><br>
-										<div class="mt-auto">
-											<div class="d-flex justify-content-between">
-												<h3>{{service.title}}</h3>
-												<br><br>
-												<img src="{{apiUrl}}{{service.image}}" alt="" class="d-sm-none d-block">
-											</div>
-											<p>{{service.description}}</p>
-											<br><br>
-											<a data-fancybox data-src="#callback" class="btn">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ →</a>
-										</div>
-									</div>
-								</div>
-							</ng-container>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section id="works" class="pb-0">
-			<div class="container">
-				<h2 class="text-center">Кейсы</h2>
-				<p class="subtitle text-center">Примеры сайтов и проектов, которые приносят <br>прибыль нашим заказчикам</p>
-				<div class="d-flex flex-wrap tab my-4">
-					<button class="tablinks" (click)="showSites()" id="defaultOpen">Простой сайт</button>
-					<button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и Facebook</button>
-				</div>
-			</div>
-
-			<div class="py-4" style="background: #fafafa;">
-				<div class="container">
-					<ng-container *ngIf="showCase == 'sites'">
-						<div id="tab1" class="tabcontent">
-							<div class="cases-grid">
-								<ng-container *ngFor="let site of sites | async">
-									<div class="case-box my-3 d-flex flex-column h-100 bg-white">
-										<img src="{{apiUrl}}{{site.image}}" alt="img">
-										<div class="d-flex flex-column p-4 h-100">
-											<h3 class="m-0 mb-3">{{site.description}}</h3>
-											<div class="mt-auto">
-												<a href="{{site.link}}" class="btn">ПЕРЕЙТИ → </a>
-											</div>
-										</div>
-									</div>
-								</ng-container>
-							</div>
-						</div>
-					</ng-container>
-
-					<ng-container *ngIf="showCase == 'advertisements'">
-						<div id="tab2" class="tabcontent">
-							<div class="cases-grid">
-								<ng-container *ngFor="let advertisement of advertisements | async">
-									<div class="case-box my-3 d-flex flex-column h-100 bg-white">
-										<img src="{{apiUrl}}{{advertisement.image}}" alt="img">
-										<div class="d-flex flex-column p-4 h-100">
-											<h3 class="m-0 mb-3">{{advertisement.description}}</h3>
-											<div class="mt-auto">
-												<a href="{{advertisement.link}}" class="btn">ПЕРЕЙТИ → </a>
-											</div>
-										</div>
-									</div>
-								</ng-container>
-							</div>
-						</div>
-					</ng-container>
-				</div>
-			</div>
-		</section>
-	</main>
+	</form>
+</div>
 
 </body>
