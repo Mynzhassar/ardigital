@@ -1,46 +1,45 @@
 <body>
 <header>
-    <div class="container">
+    <div>
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="index.html">
-                    <img src="assets/logoblack.png" alt="logo">
-                </a>
+                <img src="assets/logoblack.png" alt="logo">
             </div>
             <nav>
                 <ul>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#works">Наши работы</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="#profits">О нас</a></li>
+                    <li><a href="#cases">Наши работы</a></li>
+                    <li><a href="#application">Контакты</a></li>
                 </ul>
             </nav>
-            <div class="d-md-none d-block">
-                <div class="burger"><span></span></div>
-            </div>
         </div>
     </div>
 </header>
 <main>
     <section class="section1 d-flex flex-column">
-        <div class="container my-auto">
+        <div class="container">
             <div class="row">
-                <div class="col-md-7 my-3 align-self-center order-md-1 order-2">
+                <div class="col-md-7">
                     <p class="subtitle"><b>Маркетинг. Создание сайтов. Автоматизация</b></p>
-                    <h1>Увеличь прибыль бизнеса в 2-3 раза, внедрив актуальные инструменты
+                    <br>
+                    <h1 class="title">Увеличь прибыль бизнеса в 2-3 раза, внедрив актуальные инструменты
                         маркетинга</h1>
+                    <br>
                     <p class="subtitle">Станьте нашим партнером и мы выведем <br>вашу компанию на
                         новый уровень</p>
-                    <a href="#contacts" class="btn mt-4">узнать подробнее</a>
+                    <br>
+                    <a href="#application" class="btn mt-4">узнать подробнее</a>
                 </div>
-                <div class="col-md-5 my-3 align-self-center order-md-2 order-1">
-                    <img src="assets/Saly-1.png" alt="main pic" class="mx-auto">
+                <div class="col-md-5">
+                    <img src="assets/Saly-1.png" alt="main pic">
                 </div>
             </div>
         </div>
     </section>
-    <section id="about" class="section2 text-center">
+    <section id="profits" class="section2 text-center">
         <div class="container">
-            <h2 class="text-center">Что вы получаете работая с нами ?</h2>
+            <h2 class="text-center title">Что вы получаете работая с нами ?</h2>
+            <br><br>
             <div class="profits-grid">
                 <ng-container *ngFor="let profit of profits | async">
                     <div class="profit-box">
@@ -64,8 +63,8 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="d-flex flex-column h-100">
-                        <h2>Услуги</h2>
-                        <div class="my-auto">
+                        <h2 class="title">Услуги</h2>
+                        <div>
                             <img src="assets/Saly-2.webp" class="section3_img" alt="img">
                         </div>
                     </div>
@@ -76,28 +75,25 @@
                             <div class="service-box my-3">
                                 <div class="box d-flex flex-column h-100">
                                     <img src="{{apiUrl}}{{service.image}}" alt=""
-                                         class="mx-auto d-sm-block d-none">
+                                         class="mx-auto d-sm-block">
                                     <br>
                                     <div class="mt-auto">
                                         <div class="d-flex justify-content-between">
-                                            <h3>{{service.title}}</h3>
+                                            <h3 class="title text-center">{{service.title}}</h3>
                                             <br>
                                             <img src="{{apiUrl}}{{service.image}}" alt=""
                                                  class="d-sm-none d-block">
+                                            <br>
                                         </div>
                                         <p>{{service.description}}</p>
-                                        <br>
                                         <ng-template #content let-modal>
                                             <div class="modal-header">
-                                                <h4 class="modal-title"
-                                                    id="modal-basic-title">
+                                                <h4 class="modal-title text-center" id="modal-basic-title">
                                                     Узнать подробнее
                                                 </h4>
-                                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
+                                                <button class="x-button" (click)="modal.dismiss('Cross click')">X</button>
                                             </div>
-                                            <div class="box my-3 this-form-goi">
+                                            <div class="box contact-form">
                                                 <div>Ваше имя</div>
                                                 <input type="text" [(ngModel)]="consultationFullName" placeholder="Введите ваше имя"/>
                                                 <div>Ваш email</div>
@@ -110,7 +106,7 @@
                                             </div>
                                         </ng-template>
                                         <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-                                            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ →
+                                            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
                                         </button>
                                     </div>
                                 </div>
@@ -121,32 +117,30 @@
             </div>
         </div>
     </section>
-    <section class="that-class-center pb-0">
+    <section id="cases" class="cases-section pb-0">
         <div class="container">
-            <h2 class="text-center">Кейсы</h2>
+            <h2 class="text-center title">Кейсы</h2>
+            <br><br>
             <p class="subtitle text-center">Примеры сайтов и проектов, которые приносят <br>прибыль
                 нашим заказчикам</p>
             <div class="d-flex flex-wrap tab my-4">
-                <button class="tablinks" (click)="showSites()" id="defaultOpen">Простой сайт
-                </button>
-                <button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и
-                    Facebook
-                </button>
+                <button class="tablinks" (click)="showSites()">Сайт</button>
+                <button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и Facebook</button>
             </div>
         </div>
-
         <div>
             <div class="container">
                 <ng-container *ngIf="showCase == 'sites'">
                     <div class="cases-grid">
                         <ng-container *ngFor="let site of sites | async">
                             <div class="my-3">
-                                <div class="d-flex flex-column h-100 this-div">
-                                    <img class="that-image" src="{{apiUrl}}{{site.image}}" alt="img">
+                                <div class="d-flex flex-column h-100 case-div">
+                                    <img class="case-image" src="{{apiUrl}}{{site.image}}" alt="img">
                                     <div class="d-flex flex-column p-4 h-100">
-                                        <h5 class="m-0 mb-3">{{site.description}}</h5>
-                                        <div class="mt-auto">
-                                            <a href="{{site.link}}" class="btn">ПЕРЕЙТИ → </a>
+                                        <h5 class="m-0 mb-3 title text-center">{{site.description}}</h5>
+                                        <br><br>
+                                        <div class="mt-auto text-center">
+                                            <a href="{{site.link}}" class="btn">ПЕРЕЙТИ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -154,17 +148,17 @@
                         </ng-container>
                     </div>
                 </ng-container>
-
                 <ng-container *ngIf="showCase == 'advertisements'">
                     <div class="cases-grid">
                         <ng-container *ngFor="let advertisement of advertisements | async">
                             <div class="my-3">
-                                <div class="d-flex flex-column h-100 this-div">
-                                    <img class="that-image" src="{{apiUrl}}{{advertisement.image}}" alt="img">
+                                <div class="d-flex flex-column h-100 case-div">
+                                    <img class="case-image" src="{{apiUrl}}{{advertisement.image}}" alt="img">
                                     <div class="d-flex flex-column p-4 h-100">
-                                        <h5 class="m-0 mb-3">{{advertisement.description}}</h5>
-                                        <div class="mt-auto">
-                                            <a href="{{advertisement.link}}" class="btn">ПЕРЕЙТИ → </a>
+                                        <h5 class="m-0 mb-3 title text-center">{{advertisement.description}}</h5>
+                                        <br><br>
+                                        <div class="mt-auto text-center">
+                                            <a href="{{advertisement.link}}" class="btn">ПЕРЕЙТИ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -175,15 +169,15 @@
             </div>
         </div>
     </section>
-    <section id="contacts" class="section4">
+    <section id="application" class="section4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="h2 line">Оставь заявку прямо сейчас и получи <br><span>СКИДКУ 15%</span></div>
+                    <div class="h2 title line">Оставь заявку прямо сейчас и получи<br><span>СКИДКУ 15%</span></div>
                     <img src="assets/Saly-31.webp" alt="img" class="mx-auto d-md-block d-none">
                 </div>
                 <div class="col-md-6 align-self-center">
-                    <div class="box my-3 this-form-goi">
+                    <div class="box my-3 contact-form">
                             <div>Ваше имя</div>
                             <input type="text" [(ngModel)]="applicationFullName" placeholder="Введите ваше имя"/>
                             <div>Ваш email</div>
@@ -199,7 +193,5 @@
             </div>
         </div>
     </section>
-
 </main>
-
 </body>
