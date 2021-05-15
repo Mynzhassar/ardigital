@@ -132,14 +132,6 @@ contact-form .btn{
     background-color: white;
 }
 
-button:active{
-    background:olive;
-}
-
-button:focus{
-    background:olive;
-}
-
 .tab .tablinks {
     width: 50%;
     background: #333;
