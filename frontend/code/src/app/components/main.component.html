@@ -87,10 +87,31 @@
                                         </div>
                                         <p>{{service.description}}</p>
                                         <br>
-                                        <a data-fancybox data-src="#callback" href="javascript:;" class="btn">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ →</a>
-                                        <form ng-show="showForm">
-                                            First Name: <input type="text">
-                                        </form>
+                                        <ng-template #content let-modal>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"
+                                                    id="modal-basic-title">
+                                                    Узнать подробнее
+                                                </h4>
+                                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="box my-3 this-form-goi">
+                                                <div>Ваше имя</div>
+                                                <input type="text" [(ngModel)]="consultationFullName" placeholder="Введите ваше имя"/>
+                                                <div>Ваш email</div>
+                                                <input type="email" [(ngModel)]="consultationEmail" placeholder="Введите ваш email"/>
+                                                <div>Ваш телефон</div>
+                                                <input type="tel" [(ngModel)]="consultationTelephoneNumber" placeholder="+7 (777) 777-77-77" id="phone"/>
+                                                <div class="text-center">
+                                                    <button (click)="addConsultation(service.id)" (click)="modal.close('Save click')" class="btn">Отправить</button>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+                                            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ →
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -180,18 +201,5 @@
     </section>
 
 </main>
-
-<div style="display: none;max-width: 500px;width: 100%;margin: auto;" id="callback">
-	<div class="h2 text-center my-3">Узнать подробнее</div>
-	<form action="">
-		<div>Ваше имя</div>
-		<input type="tel" placeholder="Введите ваше имя" required="">
-		<div>Ваш телефон</div>
-		<input type="tel" placeholder="+7 (999) 999-99-99" id="phone">
-		<div class="text-center">
-			<button type="submit" class="btn">отправить</button>
-		</div>
-	</form>
-</div>
 
 </body>

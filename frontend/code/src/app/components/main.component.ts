@@ -4,6 +4,7 @@ import {Advertisement, Application, Consultation, Profit, Service, Site} from '.
 import {Observable, Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {environment} from "../../environments/environment";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main',
@@ -32,10 +33,11 @@ export class MainComponent implements OnInit, OnDestroy {
   public applicationEmail: any = '';
 
   public showCase: any = 'sites';
+  public closeResult = '';
 
   private destroy = new Subject<void>();
 
-  constructor(private provider: ProviderService) {
+  constructor(private provider: ProviderService, private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -85,6 +87,26 @@ export class MainComponent implements OnInit, OnDestroy {
       this.applicationEmail = '';
       this.applications.push(res)
     })
+  }
+
+  open(content: any) {
+    this.modalService.open(content,
+   {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult =
+         `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   ngOnDestroy(): void {

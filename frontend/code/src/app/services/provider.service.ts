@@ -23,8 +23,8 @@ export class ProviderService {
 
   public addConsultation(serviceId: number, fullName: any, telephoneNumber: any, email: any): Observable<Consultation> {
     return this.http.post<Consultation>(`${this.apiUrl}/${serviceId}/add_consultation`, {
-      fullName: fullName,
-      telephoneNumber: telephoneNumber,
+      full_name: fullName,
+      telephone_number: telephoneNumber,
       email: email,
     });
   }
