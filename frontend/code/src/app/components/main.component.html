@@ -117,7 +117,7 @@
             </div>
         </div>
     </section>
-    <section id="cases" class="cases-section pb-0">
+    <section id="cases" class="cases-section">
         <div class="container">
             <h2 class="text-center title">Кейсы</h2>
             <br><br>
@@ -128,18 +128,17 @@
                 <button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и Facebook</button>
             </div>
         </div>
-        <div>
-            <div class="container">
-                <ng-container *ngIf="showCase == 'sites'">
-                    <div class="cases-grid">
+        <div class="container">
+            <ng-container *ngIf="showCase == 'sites'">
+                <div class="cases-grid">
                         <ng-container *ngFor="let site of sites | async">
                             <div class="my-3">
                                 <div class="d-flex flex-column h-100 case-div">
                                     <img class="case-image" src="{{apiUrl}}{{site.image}}" alt="img">
                                     <div class="d-flex flex-column p-4 h-100">
-                                        <h5 class="m-0 mb-3 title text-center">{{site.description}}</h5>
+                                        <h5 class="m-0 mb-3 title">{{site.description}}</h5>
                                         <br><br>
-                                        <div class="mt-auto text-center">
+                                        <div class="mt-auto">
                                             <a href="{{site.link}}" class="btn">ПЕРЕЙТИ</a>
                                         </div>
                                     </div>
@@ -147,17 +146,17 @@
                             </div>
                         </ng-container>
                     </div>
-                </ng-container>
-                <ng-container *ngIf="showCase == 'advertisements'">
-                    <div class="cases-grid">
+            </ng-container>
+            <ng-container *ngIf="showCase == 'advertisements'">
+                <div class="cases-grid">
                         <ng-container *ngFor="let advertisement of advertisements | async">
                             <div class="my-3">
                                 <div class="d-flex flex-column h-100 case-div">
                                     <img class="case-image" src="{{apiUrl}}{{advertisement.image}}" alt="img">
                                     <div class="d-flex flex-column p-4 h-100">
-                                        <h5 class="m-0 mb-3 title text-center">{{advertisement.description}}</h5>
+                                        <h5 class="m-0 mb-3 title">{{advertisement.description}}</h5>
                                         <br><br>
-                                        <div class="mt-auto text-center">
+                                        <div class="mt-auto">
                                             <a href="{{advertisement.link}}" class="btn">ПЕРЕЙТИ</a>
                                         </div>
                                     </div>
@@ -165,8 +164,7 @@
                             </div>
                         </ng-container>
                     </div>
-                </ng-container>
-            </div>
+            </ng-container>
         </div>
     </section>
     <section id="application" class="section4">
