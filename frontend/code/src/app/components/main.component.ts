@@ -35,6 +35,9 @@ export class MainComponent implements OnInit, OnDestroy {
   public showCase: any = 'sites';
   public closeResult = '';
 
+  public activeSite: boolean = true
+  public activeAdvertisement: boolean = false
+
   private destroy = new Subject<void>();
 
   constructor(private provider: ProviderService, private modalService: NgbModal) {
@@ -74,10 +77,14 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public showSites() {
     this.showCase = 'sites';
+    this.activeSite = true;
+    this.activeAdvertisement = false;
   }
 
   public showAdvertisements() {
     this.showCase = 'advertisements';
+    this.activeSite = false;
+    this.activeAdvertisement = true;
   }
 
   public addApplication() {

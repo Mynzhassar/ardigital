@@ -124,8 +124,8 @@
             <p class="subtitle text-center">Примеры сайтов и проектов, которые приносят <br>прибыль
                 нашим заказчикам</p>
             <div class="d-flex flex-wrap tab my-4">
-                <button class="tablinks" (click)="showSites()">Сайт</button>
-                <button class="tablinks" (click)="showAdvertisements()">Реклама в Instagram и Facebook</button>
+                <button class="tablinks" (click)="showSites()" [ngStyle]="{'background-color':activeSite ? '#f64f4f' : '#474747'}">Сайт</button>
+                <button class="tablinks" (click)="showAdvertisements()" [ngStyle]="{'background-color':activeAdvertisement ? '#f64f4f' : '#474747'}">Реклама в Instagram и Facebook</button>
             </div>
         </div>
         <div class="container">
