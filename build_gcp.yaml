@@ -9,5 +9,4 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'gcr.io/ardigital/1.0', './ardigital/backend' ]
 
-# Publish the image to Container Registry.
 images: [ 'gcr.io/ardigital/1.0' ]
