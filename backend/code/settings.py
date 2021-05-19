@@ -1,18 +1,16 @@
 import os
 
-from decouple import config
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG')
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = os.environ['DEBUG']
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS']
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = os.environ['EMAIL_PORT']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,10 +57,11 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT'),
+        'NAME': os.environ['DB_NAME_DJANGO'],
+        'USER': os.environ['DB_USER_DJANGO'],
+        'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
+        'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
+        'PORT': 5432,
     }
 }
 
