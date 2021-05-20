@@ -15,8 +15,6 @@ services:
       - ./backend:/code
     depends_on:
       - ardigital-db
-    environment:
-      - DJANGO_SETTINGS=dev
     ports:
       - "80:80"
 
@@ -28,8 +26,6 @@ services:
     command: python3 backend/manage.py runworkers
     volumes:
       - ./backend:/code
-    environment:
-      - DJANGO_SETTINGS=dev
 
   ardigital-client:
     restart: on-failure
