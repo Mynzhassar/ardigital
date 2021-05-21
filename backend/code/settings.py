@@ -61,7 +61,7 @@ DATABASES = {
         'USER': os.environ['DB_USER_DJANGO'],
         'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
         'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
-        'PORT': 5432,
+        'PORT': '5432',
     }
 }
 
