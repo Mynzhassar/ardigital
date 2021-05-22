@@ -3,5 +3,4 @@ envs
 __pycache__
 .env
 
-dist
 node_modules
