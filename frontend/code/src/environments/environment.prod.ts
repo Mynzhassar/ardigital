@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://ardigital.kz/"
+  apiUrl: "http://107.178.209.162/"
 };
