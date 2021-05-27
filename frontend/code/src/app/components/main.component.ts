@@ -94,6 +94,9 @@ export class MainComponent implements OnInit, OnDestroy {
       this.applicationEmail = '';
       this.applications.push(res)
     })
+    this.applicationFullName = '';
+    this.applicationTelephoneNumber = '';
+    this.applicationEmail = '';
   }
 
   open(content: any) {

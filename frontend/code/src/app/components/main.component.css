@@ -67,7 +67,7 @@
 
 .section2 > div:after{
 	content: '';
-	background: url(/../../assets/Saly-8.webp) bottom center no-repeat;
+	background: url('~/assets/Saly-8.webp') bottom center no-repeat;
 	width: 360px;
 	height: 360px;
 	background-size: contain;
@@ -381,7 +381,7 @@ nav ul li a{
 
 .section3 > div:after, .section3 > div:before{
 	content: '';
-    background: url(/../../assets/circle.png) top center no-repeat;
+    background: url('~/assets/circle.png') top center no-repeat;
     background-size: contain;
     width: 400px;
     height: 400px;
@@ -412,7 +412,7 @@ nav ul li a{
 
 .section4 > div:before {
     content: '';
-    background: url(/../../assets/circle.png) top center no-repeat;
+    background: url('~/assets/circle.png') top center no-repeat;
     background-size: contain;
     width: 500px;
     height: 500px;
