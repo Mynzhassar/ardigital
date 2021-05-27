@@ -130,7 +130,7 @@
         </div>
         <div class="container">
             <ng-container *ngIf="showCase == 'sites'">
-                <div class="cases-grid">
+                <div class="cases-grid display-sites">
                         <ng-container *ngFor="let site of sites | async">
                             <div class="my-3">
                                 <div class="d-flex flex-column h-100 case-div">
@@ -148,7 +148,7 @@
                     </div>
             </ng-container>
             <ng-container *ngIf="showCase == 'advertisements'">
-                <div class="cases-grid">
+                <div class="cases-grid display-advertisements">
                         <ng-container *ngFor="let advertisement of advertisements | async">
                             <div class="my-3">
                                 <div class="d-flex flex-column h-100 case-div">

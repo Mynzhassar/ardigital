@@ -124,7 +124,6 @@ contact-form .btn{
 
 .cases-section {
     display: block;
-    overflow: auto;
     background-color: #fafafa;
 }
 
@@ -539,4 +538,12 @@ h1, h2{
 .h2{
 	font-size: 45px;
 	font-weight: bold;
+}
+
+.display-sites {
+    height: 1000px;
+}
+
+.display-advertisements {
+    height: 1500px;
 }
