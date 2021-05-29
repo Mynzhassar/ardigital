@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = os.environ['DEBUG']
+DEBUG = False
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS']
 
 EMAIL_HOST = os.environ['EMAIL_HOST']

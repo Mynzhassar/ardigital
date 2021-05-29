@@ -119,6 +119,10 @@ export class MainComponent implements OnInit, OnDestroy {
     }
   }
 
+  public openWindow() {
+    window.open("https://ardigital.kz/sps")
+  }
+
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
